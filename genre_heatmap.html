@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.3"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-056effcf51d7c189e01a80ee682401b6"}, "mark": {"type": "rect", "stroke": "white"}, "encoding": {"color": {"field": "avg_rating", "scale": {"domain": [7.0, 8.5], "scheme": "blues"}, "title": "Average IMDb Rating", "type": "quantitative"}, "opacity": {"condition": {"param": "param_28", "value": 1}, "value": 0.25}, "tooltip": [{"field": "main_genre", "title": "Genre", "type": "nominal"}, {"field": "era", "title": "Era", "type": "nominal"}, {"field": "avg_rating", "format": ".2f", "title": "Avg Rating", "type": "quantitative"}, {"field": "show_count", "title": "# Shows", "type": "quantitative"}], "x": {"field": "era", "sort": ["Pre-Streaming", "Streaming (2010\u20132019)", "COVID Era (2020+)"], "title": "Era", "type": "nominal"}, "y": {"field": "main_genre", "title": "Genre", "type": "nominal"}}, "height": 320, "params": [{"name": "param_28", "select": {"type": "point", "fields": ["main_genre"]}}], "title": "Average IMDb Rating by Genre Across Television Eras", "width": 420, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json", "datasets": {"data-056effcf51d7c189e01a80ee682401b6": [{"era": "COVID Era (2020+)", "main_genre": "Action", "avg_rating": 7.355660377358491, "show_count": 212}, {"era": "COVID Era (2020+)", "main_genre": "Adventure", "avg_rating": 7.314765100671141, "show_count": 149}, {"era": "COVID Era (2020+)", "main_genre": "Animation", "avg_rating": 7.708333333333333, "show_count": 84}, {"era": "COVID Era (2020+)", "main_genre": "Comedy", "avg_rating": 7.425380710659899, "show_count": 197}, {"era": "COVID Era (2020+)", "main_genre": "Crime", "avg_rating": 7.366393442622951, "show_count": 244}, {"era": "COVID Era (2020+)", "main_genre": "Drama", "avg_rating": 7.354723707664884, "show_count": 561}, {"era": "COVID Era (2020+)", "main_genre": "Fantasy", "avg_rating": 7.249180327868852, "show_count": 61}, {"era": "COVID Era (2020+)", "main_genre": "Mystery", "avg_rating": 7.158394160583942, "show_count": 137}, {"era": "COVID Era (2020+)", "main_genre": "Romance", "avg_rating": 7.3075, "show_count": 80}, {"era": "COVID Era (2020+)", "main_genre": "Thriller", "avg_rating": 7.288349514563107, "show_count": 103}, {"era": "Pre-Streaming", "main_genre": "Action", "avg_rating": 7.7379999999999995, "show_count": 50}, {"era": "Pre-Streaming", "main_genre": "Adventure", "avg_rating": 7.535416666666666, "show_count": 48}, {"era": "Pre-Streaming", "main_genre": "Animation", "avg_rating": 7.904444444444445, "show_count": 45}, {"era": "Pre-Streaming", "main_genre": "Comedy", "avg_rating": 7.672277227722772, "show_count": 101}, {"era": "Pre-Streaming", "main_genre": "Crime", "avg_rating": 7.906666666666667, "show_count": 45}, {"era": "Pre-Streaming", "main_genre": "Drama", "avg_rating": 7.7727941176470585, "show_count": 136}, {"era": "Pre-Streaming", "main_genre": "Fantasy", "avg_rating": 7.584615384615384, "show_count": 26}, {"era": "Pre-Streaming", "main_genre": "Mystery", "avg_rating": 7.8114285714285705, "show_count": 35}, {"era": "Pre-Streaming", "main_genre": "Romance", "avg_rating": 7.562068965517242, "show_count": 29}, {"era": "Pre-Streaming", "main_genre": "Thriller", "avg_rating": 8.155555555555557, "show_count": 9}, {"era": "Streaming (2010\u20132019)", "main_genre": "Action", "avg_rating": 7.602713178294573, "show_count": 258}, {"era": "Streaming (2010\u20132019)", "main_genre": "Adventure", "avg_rating": 7.634355828220859, "show_count": 163}, {"era": "Streaming (2010\u20132019)", "main_genre": "Animation", "avg_rating": 7.956692913385827, "show_count": 127}, {"era": "Streaming (2010\u20132019)", "main_genre": "Comedy", "avg_rating": 7.760869565217392, "show_count": 345}, {"era": "Streaming (2010\u20132019)", "main_genre": "Crime", "avg_rating": 7.799307958477509, "show_count": 289}, {"era": "Streaming (2010\u20132019)", "main_genre": "Drama", "avg_rating": 7.6747945205479455, "show_count": 730}, {"era": "Streaming (2010\u20132019)", "main_genre": "Fantasy", "avg_rating": 7.417441860465116, "show_count": 86}, {"era": "Streaming (2010\u20132019)", "main_genre": "Mystery", "avg_rating": 7.568125, "show_count": 160}, {"era": "Streaming (2010\u20132019)", "main_genre": "Romance", "avg_rating": 7.533333333333334, "show_count": 96}, {"era": "Streaming (2010\u20132019)", "main_genre": "Thriller", "avg_rating": 7.7337078651685385, "show_count": 89}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

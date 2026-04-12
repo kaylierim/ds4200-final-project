@@ -1,4 +1,3 @@
-// Define dimensions
 let width = 750;
 let height = 400;
 
@@ -9,7 +8,6 @@ let margin = {
   right: 20,
 };
 
-// Create SVG
 let svg = d3
   .select("body")
   .append("svg")
@@ -17,23 +15,18 @@ let svg = d3
   .attr("height", height)
   .style("background", "#fafafa");
 
-// Load and process data
 d3.csv("imdb_top_5000_tv_shows.csv")
   .then(function (data) {
-    // Clean and parse the data
     data.forEach((d) => {
       d.averageRating = +d.averageRating;
       d.numVotes = +d.numVotes;
       d.primaryGenre = d.genres ? d.genres.split(",")[0].trim() : "Unknown";
     });
 
-    // Filter out rows with missing ratings
     data = data.filter((d) => !isNaN(d.averageRating));
 
-    // Group data by genre
     let groupedByGenre = d3.group(data, (d) => d.primaryGenre);
 
-    // Calculate box plot statistics for each genre
     let boxData = Array.from(groupedByGenre, ([genre, shows]) => {
       let ratings = shows.map((d) => d.averageRating).sort(d3.ascending);
 
@@ -60,13 +53,11 @@ d3.csv("imdb_top_5000_tv_shows.csv")
       };
     });
 
-    // Filter to top 12 genres by count, then sort by median
     let topGenres = boxData
       .sort((a, b) => b.count - a.count)
       .slice(0, 12)
       .sort((a, b) => b.quartiles[1] - a.quartiles[1]);
 
-    // Define the scales
     let xScale = d3
       .scaleBand()
       .domain(topGenres.map((d) => d.genre))
@@ -83,23 +74,6 @@ d3.csv("imdb_top_5000_tv_shows.csv")
       .domain(topGenres.map((d) => d.genre))
       .range(d3.schemeTableau10);
 
-    // Make axes with the scale functions
-    let xAxis = svg
-      .append("g")
-      .call(d3.axisBottom().scale(xScale))
-      .attr("transform", `translate(0, ${height - margin.bottom})`)
-      .selectAll("text")
-      .attr("transform", "rotate(-45)")
-      .attr("text-anchor", "end")
-      .attr("dx", "-0.5em")
-      .attr("dy", "0.5em");
-
-    let yAxis = svg
-      .append("g")
-      .call(d3.axisLeft().scale(yScale))
-      .attr("transform", `translate(${margin.left}, 0)`);
-
-    // Draw the title
     svg
       .append("text")
       .attr("x", width / 2)
@@ -109,7 +83,6 @@ d3.csv("imdb_top_5000_tv_shows.csv")
       .style("font-size", "18px")
       .style("font-weight", "bold");
 
-    // Draw the axis labels
     svg
       .append("text")
       .attr("x", width / 2)
@@ -127,7 +100,6 @@ d3.csv("imdb_top_5000_tv_shows.csv")
       .style("font-size", "14px")
       .attr("transform", "rotate(-90)");
 
-    // Create a group for each box plot
     let boxes = svg
       .selectAll(".box")
       .data(topGenres)
@@ -135,7 +107,6 @@ d3.csv("imdb_top_5000_tv_shows.csv")
       .attr("class", "box")
       .attr("transform", (d) => `translate(${xScale(d.genre)}, 0)`);
 
-    // Draw vertical whisker line
     boxes
       .append("line")
       .attr("x1", xScale.bandwidth() / 2)
@@ -145,7 +116,6 @@ d3.csv("imdb_top_5000_tv_shows.csv")
       .attr("stroke", "black")
       .attr("stroke-width", 1);
 
-    // Draw bottom whisker cap
     boxes
       .append("line")
       .attr("x1", xScale.bandwidth() / 4)
@@ -155,7 +125,6 @@ d3.csv("imdb_top_5000_tv_shows.csv")
       .attr("stroke", "black")
       .attr("stroke-width", 1);
 
-    // Draw top whisker cap
     boxes
       .append("line")
       .attr("x1", xScale.bandwidth() / 4)
@@ -165,7 +134,6 @@ d3.csv("imdb_top_5000_tv_shows.csv")
       .attr("stroke", "black")
       .attr("stroke-width", 1);
 
-    // Draw the box (Q1 to Q3)
     boxes
       .append("rect")
       .attr("x", 0)
@@ -177,7 +145,6 @@ d3.csv("imdb_top_5000_tv_shows.csv")
       .attr("stroke", "black")
       .attr("stroke-width", 1);
 
-    // Draw median line
     boxes
       .append("line")
       .attr("x1", 0)
@@ -187,7 +154,6 @@ d3.csv("imdb_top_5000_tv_shows.csv")
       .attr("stroke", "black")
       .attr("stroke-width", 2);
 
-    // Draw outliers
     boxes.each(function (d) {
       d3.select(this)
         .selectAll("circle")

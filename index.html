@@ -4,50 +4,90 @@
 <head>
   <meta charset='UTF-8'>
   <title>DS4200 Final Project</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <div class="intro">
     <h1>
-    DS4200 Final Project
+    DS4200 Final Project - Trends in TV Ratings
   </h1>
   <h2>
     Deeptha Koppala, Michelle Lin, Kaylie Rim 
   </h2>
-  <h1>
-    Rating Distribution by Genre Box Plot
-  </h1>
-   <iframe 
+  <h3>Introduction</h3>
+  <p>Streaming platforms like Netflix, Disney+, and Hulu have changed the way television content is being produced and distributed. Understanding how popular TV shows differ by genre, release period, audience reception, and regional area provides insight into greater trends in viewer preferences and industry strategy during the streaming era. Our project analyzes patterns in highly rated TV shows using IMDb data to explore different factors like genre, release year, popularity, and country of origin related to audience ratings. Analyzing these trends is important because ratings and popularity influence various investment decisions, recommendation systems, content production, and cultural visibility. By visualizing these trends, our project aims to show how modern television content has evolved over time and how audience engagement varies across different types of shows.</p>
+  <p>The dataset used in this project is the IMDb Top 5000 TV Shows dataset sourced from Kaggle and it contains approximately 5,000 observations and 12 attributes. These attributes include both quantitative variables, such as average rating, number of votes, start year, end year, and rank, as well as categorical variables like title, genres, directors, and writers. The dataset also includes identifiers and links to IMDb pages, which provide additional context for each show. This combination of numerical and categorical data allows for a wide range of analysis which includes examining trends in audience ratings over time and comparing performance across genres. This dataset is well suited for exploring how television content has evolved, especially in relation to the rise of streaming platforms and changing audience preferences.</p> 
+  <h3>References</h3>
+  <a href="https://www.tandfonline.com/doi/full/10.1080/14241277.2012.675753">Audience Evolution and the Future of Audience Research</a>
+
+  <br/>
+
+  <a href="https://www.researchgate.net/publication/227442456_The_Motion_Picture_Industry_Critical_Issues_in_Practice_Current_Research_and_New_Research_Directions">The Motion Picture Industry: Critical Issues in Practice, Current Research, and New Research Directions</a>  
+</div>
+<iframe 
         src="plot.html" 
         width="100%" 
-        height="700px" 
+        height="650px" 
         style="border:none;">
     </iframe>
+    <h3>Analysis</h3>
+    <p>This chart contains TV shows that range from 2005 to 2026, where the longest 
+        show running was 19 years long (Kitchen Nightmares). The graph shows a 
+        right-triangle-like structure which is expected: the older the show, the 
+        more time it has had to run. This is why the longer-running shows are on 
+        the left-side of the chart. The largest bubbles seem to appear around the 
+        5-9 year durations, less along the top of the graph. This means that longer 
+        running shows do not directly mean more popularity. Finally, as the minimum 
+        rating gets higher, most of the bubbles concentrate towards the center of the graph. 
+        These shows have had time to develop and build an audience.</p>
    <iframe 
         src="scatterplot.html" 
         width="100%" 
-        height="700px" 
+        height="500px" 
         style="border:none;">
     </iframe>
+    <h3>Analysis</h3>
+    <p>The scatter plot shows that while there is a slight positive relationship between popularity (number of votes) and average rating, the correlation is not particularly strong. Most movies cluster between ratings of 7 and 8 regardless of popularity, suggesting that higher viewership does not necessarily guarantee significantly higher ratings. However, the most popular films tend to avoid very low ratings, indicating that widely viewed content is generally of acceptable quality. Additionally, there is substantial overlap across genres, showing that genre alone does not strongly determine either popularity or rating.</p>
   <iframe 
         src="avg_ratings.html"" 
         width="100%" 
-        height="700px" 
+        height="550px" 
         style="border:none;">
     </iframe>
+    <h3>Analysis</h3>
+    <p>The line graph shows that average ratings vary meaningfully across genres, with some exhibiting stability while others experience significant volatility. For example, genres like History remain relatively consistent, generally maintaining ratings between 7 and 8 over time, suggesting stable audience expectations and production quality. In contrast, Reality-TV and Talk-Show genres show much greater fluctuation, with sharp declines in certain years,  a noticeable drop after 2020, indicating inconsistent reception and possibly shifting viewer preferences. Additionally, genres like News show a slight upward trend followed by stabilization, suggesting periods of increased relevance or quality. Overall, while most genres hover within a similar rating range, the variability across genres highlights differences in content consistency and audience engagement over time.</p>
   <iframe 
         src="era_bar_chart.html" 
         width="100%" 
-        height="400"
+        height="500px"
         style="border:none;">
     </iframe>
+    <h3>Analysis</h3>
+    <p>The bar chart shows that average IMDb ratings are pretty similar across all three eras with only a slight decline from the pre-streaming period to the COVID era. This suggests that even though the way people watch TV has changed a lot, especially with the rise of streaming platforms, audience perceptions of top shows have stayed fairly consistent. The small drop in ratings could be because there is a much larger volume of content being produced in the streaming era, which introduces more variation in quality. With more shows being released, not all of them will meet the same standard, which can slightly lower the average. However, the overall similarity in ratings indicates that high-quality content continues to exist across all time periods, regardless of how it is distributed.</p>
   <iframe 
         src="genre_heatmap.html"" 
         width="100%" 
-        height="700px" 
+        height="500px" 
         style="border:none;">
     </iframe>
+    <h3>Analysis</h3>
+    <p>The heatmap provides a more detailed look at how ratings vary across genres and eras, helping explain the patterns seen in the bar chart. While overall ratings remain stable, the heatmap shows that different genres contribute differently to those averages. Some genres, like Documentary and Biography, consistently have higher ratings across all eras, suggesting that they are generally well received by audiences. At the same time, there are small shifts within certain genres. For example, both Romance-related content and Reality-TV appear to have higher ratings in the COVID era compared to the pre-streaming period, which may reflect changes in audience preferences and viewing habits during that time. These differences are not extremely large, but they show that genre plays a more important role in rating variation than the era itself.</p>
+
   <script src='https://d3js.org/d3.v7.min.js'></script>
   <script src='main.js'></script>
+    <h3>Analysis</h3>
+  <p>This box plot shows that documentary, animation, and fantasy have the highest average 
+    user ratings. For documentaries, there are some extreme outliers that bring the lower 
+    whisker down significantly. Comedy also has the highest amount of outliers which could 
+    happen because of higher production volume and, thus, more chances for failure. On the other hand, 
+    animation and fantasy show the most consistent quality due to their tight IQRs. Reality TV 
+    has a wide range and one of the lowest rated genres. This means that reality TV is quite 
+    inconsistent and can be interpreted as a hit or miss.</p>
+    <h3>
+        Conclusion
+    </h3>
+    <p>The visualizations suggest that while the rise of streaming platforms has significantly changed how television content is produced and consumed, it has not dramatically altered how audiences rate top shows. The bar chart highlights that average ratings remain relatively stable across eras, while the heatmap shows that differences in ratings are more strongly influenced by genre than by time period. The scatter plot further reinforces that popularity does not strongly determine ratings, indicating that higher viewership does not necessarily translate to higher perceived quality. At the same time, the line graph reveals that some genres maintain consistent ratings over time while others experience more volatility, suggesting differences in audience expectations and content stability. Expanding on this, the bubble chart shows that show longevity does not directly correlate with popularity, as the most popular shows tend to cluster within moderate durations rather than the longest-running ones. Additionally, the box plot highlights that genres such as documentary, animation, and fantasy tend to have higher and more consistent ratings, while genres like reality TV show greater variability and lower overall reception. Together, these findings suggest that audience perception of quality remains relatively stable over time and is more heavily shaped by genre characteristics and content consistency rather than changes in distribution methods. This reinforces the idea that while the streaming era has increased content volume and accessibility, the factors that drive audience engagement and ratings remain largely consistent.</p>
 </body>
 
 </html>

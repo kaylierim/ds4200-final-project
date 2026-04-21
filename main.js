@@ -74,6 +74,21 @@ d3.csv("imdb_top_5000_tv_shows.csv")
       .domain(topGenres.map((d) => d.genre))
       .range(d3.schemeTableau10);
 
+    let xAxis = svg
+      .append("g")
+      .call(d3.axisBottom().scale(xScale))
+      .attr("transform", `translate(0, ${height - margin.bottom})`)
+      .selectAll("text")
+      .attr("transform", "rotate(-45)")
+      .attr("text-anchor", "end")
+      .attr("dx", "-0.5em")
+      .attr("dy", "0.5em");
+
+    let yAxis = svg
+      .append("g")
+      .call(d3.axisLeft().scale(yScale))
+      .attr("transform", `translate(${margin.left}, 0)`);
+
     svg
       .append("text")
       .attr("x", width / 2)
